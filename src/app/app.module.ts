@@ -9,6 +9,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
+import { NgxChartsModule } from '@swimlane/ngx-charts'
+
 @NgModule({
   declarations: [
     AppComponent
@@ -18,7 +24,10 @@ import { MatIconModule } from '@angular/material/icon';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    NgxChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

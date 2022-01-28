@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "calvin-soda-pop": {
+      "hosting": {
+        "soda-pop-web": [
+          "calvin-soda-pop"
+        ]
+      }
+    }
+  }
+}
