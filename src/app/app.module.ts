@@ -12,12 +12,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import * as PlotlyJS from 'plotly.js-dist-min';
+import { PlotlyModule } from 'angular-plotly.js';
+import { TemperatureGraphComponent } from './temperature-graph/temperature-graph.component';
 
-import { NgxChartsModule } from '@swimlane/ngx-charts'
+PlotlyModule.plotlyjs = PlotlyJS;
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TemperatureGraphComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +31,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts'
     MatIconModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    NgxChartsModule
+    PlotlyModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TemperatureService, Temperature } from './temperature.service';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 
 @Component({
   selector: 'app-root',
@@ -10,13 +9,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 export class AppComponent implements OnInit {
   title = 'soda-pop-web';
 
-  temperatures: Temperature[];
+  constructor() { }
 
-  constructor(private db: TemperatureService) { }
-
-  ngOnInit(): void {
-    this.db.getAllTemps().subscribe(temps => this.temperatures = temps);
-    console.log(this.temperatures)
-  }
+  ngOnInit(): void {  }
 
 }
