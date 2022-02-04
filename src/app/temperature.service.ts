@@ -1,7 +1,7 @@
 import { query } from '@angular/animations';
 import { ThrowStmt } from '@angular/compiler';
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import {AngularFirestore, DocumentChangeAction} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import firebase from 'firebase';
@@ -14,16 +14,17 @@ export class TemperatureService {
 
   constructor(private fs: AngularFirestore) { }
 
-  // READ all temperatures
-  getAllTemps = () => this.fs.collection<Temperature>('temperatures').snapshotChanges().pipe(
-    map(actions => {
-      return actions.map(p => {
-        const list = p.payload.doc;
-        const id = list.id;
-        return {id, ...list.data() as Temperature};
-      });
-    })
-  )
+  // // READ all temperatures
+  // getAllTemps = () => this.fs.collection<Temperature>('temperatures').snapshotChanges().pipe(
+  //   map(actions => {
+  //     return actions.map(p => {
+  //       const list = p.payload.doc;
+  //       const id = list.id;
+  //       return {id, ...list.data() as Temperature};
+  //     });
+  //   })
+  // )
+  getTemps = () => this.fs.collection('temperatures').snapshotChanges();
 
 }
 

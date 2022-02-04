@@ -15,13 +15,15 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import * as PlotlyJS from 'plotly.js-dist-min';
 import { PlotlyModule } from 'angular-plotly.js';
 import { TemperatureGraphComponent } from './temperature-graph/temperature-graph.component';
+import { StockDashboardComponent } from './stock-dashboard/stock-dashboard.component';
 
 PlotlyModule.plotlyjs = PlotlyJS;
 
 @NgModule({
   declarations: [
     AppComponent,
-    TemperatureGraphComponent
+    TemperatureGraphComponent,
+    StockDashboardComponent
   ],
   imports: [
     BrowserModule,
