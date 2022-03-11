@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TemperatureService, Temperature } from '../temperature.service';
+import { TemperatureService, Temperature } from '../services/temperature.service';
 import firebase from 'firebase';
 import Timestamp = firebase.firestore.Timestamp;
 import {DocumentChangeAction} from '@angular/fire/firestore';
@@ -43,7 +43,7 @@ export class TemperatureGraphComponent implements OnInit {
       this.tempVals = this.temperatures.map(tempDoc => tempDoc.payload.doc.data().temperature);
 
       // const dates = this.timestamps.map(timestamp => timestamp.seconds);
-      console.log(this.temperatures[0].payload.doc.data().timestamp.toDate());
+      // console.log(this.temperatures[0].payload.doc.data().timestamp.toDate());
 
       this.graph = {
           data: [

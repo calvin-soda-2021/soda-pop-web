@@ -1,0 +1,29 @@
+button {
+  background-color: darkolivegreen;
+  border-radius: 20px;
+  color: #fff;
+  padding: 0 50px;
+}
+
+.form-container {
+  padding: 1rem;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+}
+
+form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 90%;
+  max-height: 15rem;
+  max-width: 18rem;
+}
+
+mat-form-field {
+  width: 100%;
+}
