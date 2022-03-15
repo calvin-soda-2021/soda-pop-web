@@ -1,5 +1,4 @@
 import { query } from '@angular/animations';
-import { ThrowStmt } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import {AngularFirestore, DocumentChangeAction} from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
