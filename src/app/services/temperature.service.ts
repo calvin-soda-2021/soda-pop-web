@@ -1,10 +1,10 @@
 import { query } from '@angular/animations';
 import { ThrowStmt } from '@angular/compiler';
 import { Injectable } from '@angular/core';
-import {AngularFirestore, DocumentChangeAction} from '@angular/fire/firestore';
+import {AngularFirestore, DocumentChangeAction} from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import firebase from 'firebase';
+import firebase from 'firebase/compat';
 import Timestamp = firebase.firestore.Timestamp;
 
 @Injectable({

@@ -1,5 +1,5 @@
 // @ts-ignore
-import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
+import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/compat/auth';
 import { Injectable } from '@angular/core';
 
 @Injectable({

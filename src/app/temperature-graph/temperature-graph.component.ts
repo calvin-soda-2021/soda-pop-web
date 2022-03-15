@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TemperatureService, Temperature } from '../services/temperature.service';
-import firebase from 'firebase';
+import firebase from 'firebase/compat';
 import Timestamp = firebase.firestore.Timestamp;
-import {DocumentChangeAction} from '@angular/fire/firestore';
+import {DocumentChangeAction} from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-temperature-graph',
