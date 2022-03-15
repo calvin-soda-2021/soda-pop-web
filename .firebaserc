@@ -1,21 +1,5 @@
 {
-  "targets": {
-    "calvin-soda-pop": {
-      "hosting": {
-        "soda-pop-web": [
-          "calvin-soda-pop"
-        ]
-      }
-    },
-    "calvin-soda-pop-e9e3e": {
-      "hosting": {
-        "soda-pop-web": [
-          "calvin-soda-pop-e9e3e"
-        ]
-      }
-    }
-  },
   "projects": {
-    "default": "calvin-soda-pop"
+    "default": "calvin-soda-pop-e9e3e"
   }
 }
