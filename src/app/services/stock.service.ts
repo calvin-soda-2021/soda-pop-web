@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import firebase from 'firebase/compat';
 import {map} from 'rxjs/operators';
 
@@ -12,10 +12,15 @@ export class StockService {
 
   getStock = () => this.fs.collection('products').snapshotChanges();
 
-  // async getStockForProduct(product: number): Promise<Stock> {
+  // async getStockForProduct(product: number): {
   //   // get last stock update
-  //   const stock_updates = await this.fs.collection('stock-updates').get().orderBy
   // }
+
+  // getLatestStock = () => this.fs.collection('stock-updates', ref => ref.orderBy('timestamp').limit(1)).get();
+
+  getLatestStock = () => {
+    return this.fs.collection('sale-updates', ref => ref.orderBy('timestamp').limit(1)).valueChanges();
+  }
 
   getInStock = () => this.fs.collection('selections').doc('values').valueChanges();
 

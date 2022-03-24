@@ -23,15 +23,21 @@ export class TemperatureService {
   //     });
   //   })
   // )
-  getTemps = () => this.fs.collection('temperatures').snapshotChanges();
+  lastMonth = Date.now() - 2592000000; // 30 days ago
+  // lastMonthFirebase = Timestamp.fromMillis(this.lastMonth);
+  getTemps = () => this.fs.collection('temperatures', ref => ref.orderBy(
+    'timestamp',
+    'desc',
+  )
+    .limit(30) ).snapshotChanges()
 
 }
 
-export interface Temperature {
-  id?: string;
-  temperature: number;
-  timestamp: Timestamp;
-}
+// export interface Temperature {
+//   id?: string;
+//   temperature: number;
+//   timestamp: Timestamp;
+// }
 
 
 

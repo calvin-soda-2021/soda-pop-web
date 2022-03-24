@@ -13,6 +13,8 @@ export class StockDashboardComponent implements OnInit {
   stocks: any;
   tableData: any;
   columnsToDisplay: string[] = ['productName', 'inStock', 'estimatedStock'];
+  latestStock: any;
+  stockList: any;
 
   mockStock: {productName: string, inStock: string, estimatedStock: number}[] = [
     {productName: 'Coke', inStock: 'Yes', estimatedStock: 32},
@@ -27,15 +29,22 @@ export class StockDashboardComponent implements OnInit {
     this.db.getInStock().subscribe((product) => {
       this.stocks = product;
       const productList = Object.entries(this.stocks);
+      // console.log(productList);
       this.tableData = productList.map(p => {
         const inStock = p[1]['in-stock'] ? 'Yes' : 'No';
         return {
-         productName: p[1]['name'],
-         inStock,
-         estimatedStock: p[1]['in-stock'] ? 'Coming soon' : 0,
-       };
+          productName: p[1]["name"],
+          inStock,
+          estimatedStock: p[1]['in-stock'] ? 'Coming soon' : 0,
+        };
       }).filter(p => p.productName !== 'NONE');
-      console.log(this.tableData);
+    });
+
+    this.db.getLatestStock().subscribe((stock) => {
+      this.stocks = stock;
+      // const stockList = this.stocks;
+      // console.log(stockList);
+      console.log(this.stocks);
     });
   }
 

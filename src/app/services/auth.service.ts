@@ -1,25 +1,20 @@
-// @ts-ignore
-import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/compat/auth';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Injectable } from '@angular/core';
+import {LoginData} from '../interfaces/login-data.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private auth: Auth) { }
+  constructor(private auth: AngularFireAuth) { }
 
   login({email, password}: LoginData): any {
-    return signInWithEmailAndPassword(this.auth, email, password);
+    return this.auth.signInWithEmailAndPassword(email, password);
   }
 
-  logout() {
-    return signOut(this.auth);
+  logout(): any {
+    return this.auth.signOut();
   }
 
-}
-
-export interface LoginData {
-  email: string;
-  password: string;
 }
