@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>Edit stock for {{productName}}</h2>
+<mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <mat-label>Total sales (from machine)</mat-label>
+    <input disabled matInput value="{{latestSales}}">
+  </mat-form-field>
+  -
+  <mat-form-field appearance="outline">
+    <mat-label>Stock Offset (calculated)</mat-label>
+    <input disabled matInput value="{{stockOffset}}">
+  </mat-form-field>
+  =
+  <mat-form-field appearance="outline">
+    <mat-label>Current stock</mat-label>
+    <input matInput type="number" value="{{currentStock}}" (change)="inputChange($event)">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-flat-button (click)="close()">Close</button>
+  <button mat-flat-button color="primary" (click)="confirm()">Confirm</button>
+</mat-dialog-actions>

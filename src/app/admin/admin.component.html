@@ -1,6 +1,8 @@
 <mat-toolbar color="primary">
   <span>Calvin Soda-Pop Administration</span>
   <span class="button-container">
-    <button mat-flat-button color="accent" (click)='logout()'>Logout</button>
+    <button class="button" mat-flat-button color="accent" routerLink="/home">Back Home</button>
+    <button class="button" mat-flat-button color="warn" (click)='logout()'>Logout</button>
   </span>
 </mat-toolbar>
+<admin-product-row *ngFor="let product of tableData" [product]="product"></admin-product-row>

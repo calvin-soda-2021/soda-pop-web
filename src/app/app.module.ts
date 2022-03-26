@@ -8,7 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-// import { Mat}
 
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
@@ -26,19 +25,22 @@ import {MatInputModule} from '@angular/material/input';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { StockDashboardRowComponent } from './stock-dashboard-row/stock-dashboard-row.component';
+import {MatCardModule} from '@angular/material/card';
 
 PlotlyModule.plotlyjs = PlotlyJS;
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    TemperatureGraphComponent,
-    StockDashboardComponent,
-    HomeComponent,
-    PageNotFoundComponent,
-    LoginComponent,
-    LoginPageComponent
-  ],
+    declarations: [
+        AppComponent,
+        TemperatureGraphComponent,
+        StockDashboardComponent,
+        HomeComponent,
+        PageNotFoundComponent,
+        LoginComponent,
+        LoginPageComponent,
+        StockDashboardRowComponent,
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -53,8 +55,9 @@ PlotlyModule.plotlyjs = PlotlyJS;
     MatInputModule,
     ReactiveFormsModule,
     MatButtonModule,
+    MatCardModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
