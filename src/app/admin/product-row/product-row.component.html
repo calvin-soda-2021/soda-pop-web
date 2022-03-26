@@ -1,0 +1,19 @@
+<section class="grid-container">
+  <span class="mat-body-strong product-name">{{product.name}}:</span>
+  <mat-form-field appearance="outline">
+    <mat-label>Total sales (from machine)</mat-label>
+    <input disabled matInput value="{{totalSales}}">
+  </mat-form-field>
+  <span class="mat-body-strong math">-</span>
+  <mat-form-field appearance="outline">
+    <mat-label>Stock Offset (calculated)</mat-label>
+    <input disabled matInput value="{{stockOffset}}">
+  </mat-form-field>
+  <span class="mat-body-strong math">=</span>
+  <mat-form-field appearance="outline">
+    <mat-label>Current stock</mat-label>
+    <input disabled matInput value="{{product.estimatedStock}}" >
+  </mat-form-field>
+  <button mat-stroked-button (click)="openDialog()">Edit</button>
+</section>
+<mat-divider></mat-divider>

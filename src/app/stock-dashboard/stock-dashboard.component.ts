@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {StockService} from '../services/stock.service';
+import {Product} from '../interfaces/product.interface';
 
 @Component({
   selector: 'app-stock-dashboard',
@@ -7,44 +8,46 @@ import {StockService} from '../services/stock.service';
   styleUrls: ['./stock-dashboard.component.scss']
 })
 export class StockDashboardComponent implements OnInit {
-
   constructor(private db: StockService) { }
 
   stocks: any;
-  tableData: any;
-  columnsToDisplay: string[] = ['productName', 'inStock', 'estimatedStock'];
-  latestStock: any;
-  stockList: any;
+  tableData: Product[];
+  productList: any[];
 
-  mockStock: {productName: string, inStock: string, estimatedStock: number}[] = [
-    {productName: 'Coke', inStock: 'Yes', estimatedStock: 32},
-    {productName: 'New Coke', inStock: 'No', estimatedStock: 0},
-    {productName: 'Vanilla Coke', inStock: 'Yes', estimatedStock: 24},
-    {productName: 'Coke', inStock: 'Yes', estimatedStock: 17},
-    {productName: 'New Coke', inStock: 'No', estimatedStock: 0},
-    {productName: 'Vanilla Coke', inStock: 'Yes', estimatedStock: 52},
-  ];
+  // mockStock: Product[] = [
+  //   {name: 'Coke', inStock: 'Yes', estimatedStock: 32, price: "$1.75"},
+  //   {name: 'New Coke', inStock: 'No', estimatedStock: 0, price: "$1.75"},
+  //   {name: 'Vanilla Coke', inStock: 'Yes', estimatedStock: 24, price: "$1.75"},
+  //   {name: 'Coke', inStock: 'Yes', estimatedStock: 17, price: "$1.75"},
+  //   {name: 'New Coke', inStock: 'No', estimatedStock: 0, price: "$1.75"},
+  //   {name: 'Vanilla Coke', inStock: 'Yes', estimatedStock: 52, price: "$1.75"},
+  // ];
+
 
   ngOnInit(): void {
-    this.db.getInStock().subscribe((product) => {
-      this.stocks = product;
-      const productList = Object.entries(this.stocks);
-      // console.log(productList);
-      this.tableData = productList.map(p => {
-        const inStock = p[1]['in-stock'] ? 'Yes' : 'No';
-        return {
-          productName: p[1]["name"],
-          inStock,
-          estimatedStock: p[1]['in-stock'] ? 'Coming soon' : 0,
-        };
-      }).filter(p => p.productName !== 'NONE');
-    });
 
-    this.db.getLatestStock().subscribe((stock) => {
-      this.stocks = stock;
-      // const stockList = this.stocks;
-      // console.log(stockList);
-      console.log(this.stocks);
+    this.db.getCurrentProducts().subscribe((product) => {
+      this.stocks = product;
+      this.productList = Object.entries(this.stocks);
+
+      this.tableData = this.productList.map((p: any): Product => {
+        const pIndex = parseInt(p[0]);
+        const product = p[1]
+        const priceStr: string = product['price']
+        const priceFormatted = (parseInt(priceStr)/100).toLocaleString(
+          "en-US",
+          {style:"currency", currency:"USD"})
+
+        return {
+          id: pIndex,
+          name: product.name,
+          inStock: product['in-stock'],
+          estimatedStock: product['in-stock'] ? 'Loading' : 0,
+          price: priceFormatted,
+        };
+
+      }).filter(p => p.name !== 'NONE');
+
     });
   }
 

@@ -1,0 +1,13 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: [name] 20% [total] auto [minus] auto [offset] auto [equals] 1rem [stock] 1fr [edit] auto [end];
+}
+.math {
+  justify-self: center;
+  align-self: center;
+}
+
+.product-name{
+  justify-self: left;
+  align-self: center;
+}
