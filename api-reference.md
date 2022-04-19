@@ -66,9 +66,13 @@ Every time new DEX data arrives, the following queries should be made.
 ```
 (For now, iterate over each selection and POST for each one to create new documents for each selection. Firebase does have support for batch create over REST, could be worth looking into)
 
-### READ current product information so that price can be written to the machine https://firestore.googleapis.com/v1/projects/calvin-soda-pop-e9e3e/databases/(default)/documents/selections/values
+### READ price updates so that price can be updated on the machine https://firestore.googleapis.com/v1/projects/calvin-soda-pop-e9e3e/databases/(default)/documents/selections/price-updates
+
+In the document, there will be an entry for each product who's price has updated, where the key is the product number and the value is the new price in cents. 
 
 (This request can be unauthenticated and does not require a body)
+
+Process this on the backend and write the new price to the machine, and be sure to use the updated price in the PATCH request below.
 
 ### PATCH sold out information to /v1/projects/calvin-soda-pop-e9e3e/databases/(default)/documents/selections/values
 
