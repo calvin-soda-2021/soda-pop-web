@@ -1,4 +1,8 @@
 <div class="container">
   <h2 class="mat-title">Current products:</h2>
-    <app-stock-dashboard-row *ngFor="let product of tableData" [product]="product"></app-stock-dashboard-row>
+  <mat-grid-list [cols]="gridBreakpoint" gutterSize="1rem" (window:resize)="onResize($event)" rowHeight="20rem">
+    <mat-grid-tile *ngFor="let product of tableData" class="grid-tile">
+      <app-stock-dashboard-row class="stock-card" [product]="product"></app-stock-dashboard-row>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>

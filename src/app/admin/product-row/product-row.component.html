@@ -1,19 +1,21 @@
-<section class="grid-container">
-  <span class="mat-body-strong product-name">{{product.name}}:</span>
-  <mat-form-field appearance="outline">
-    <mat-label>Total sales (from machine)</mat-label>
-    <input disabled matInput value="{{totalSales}}">
-  </mat-form-field>
-  <span class="mat-body-strong math">-</span>
-  <mat-form-field appearance="outline">
-    <mat-label>Stock Offset (calculated)</mat-label>
-    <input disabled matInput value="{{stockOffset}}">
-  </mat-form-field>
-  <span class="mat-body-strong math">=</span>
-  <mat-form-field appearance="outline">
-    <mat-label>Current stock</mat-label>
-    <input disabled matInput value="{{product.estimatedStock}}" >
-  </mat-form-field>
-  <button mat-stroked-button (click)="openDialog()">Edit</button>
-</section>
-<mat-divider></mat-divider>
+<mat-card class="card-container">
+  <mat-card-title>{{product.name}}</mat-card-title>
+  <mat-card-content>
+    <mat-form-field appearance="standard" class="stock-display">
+      <mat-label>Current Stock</mat-label>
+      <input disabled matInput value="{{product.estimatedStock}}">
+      <button mat-icon-button matSuffix aria-label="Edit current product stock" (click)="openStockDialog()">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+      <mat-label>Product Price</mat-label>
+      <span matPrefix>$ &nbsp;</span>
+      <input disabled matInput [value]="product.price.slice(1)">
+      <button mat-icon-button matSuffix aria-label="Edit current product price" (click)="openPriceDialog()">
+        <mat-icon>price_change</mat-icon>
+      </button>
+    </mat-form-field>
+  </mat-card-content>
+</mat-card>

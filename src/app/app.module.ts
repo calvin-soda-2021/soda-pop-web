@@ -27,6 +27,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { StockDashboardRowComponent } from './stock-dashboard-row/stock-dashboard-row.component';
 import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 PlotlyModule.plotlyjs = PlotlyJS;
 
@@ -41,22 +42,23 @@ PlotlyModule.plotlyjs = PlotlyJS;
         LoginPageComponent,
         StockDashboardRowComponent,
     ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatIconModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
-    PlotlyModule,
-    MatTableModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatCardModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatIconModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule,
+        PlotlyModule,
+        MatTableModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatCardModule,
+        MatGridListModule,
+    ],
     providers: [],
     bootstrap: [AppComponent]
 })

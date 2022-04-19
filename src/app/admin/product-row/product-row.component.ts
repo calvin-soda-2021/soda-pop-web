@@ -4,6 +4,7 @@ import {StockService} from '../../services/stock.service';
 import {Product} from '../../interfaces/product.interface';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {StockEditDialogComponent} from '../stock-edit-dialog/stock-edit-dialog.component';
+import {PriceEditDialogComponent} from '../price-edit-dialog/price-edit-dialog.component';
 
 @Component({
   selector: 'admin-product-row',
@@ -30,11 +31,11 @@ export class ProductRowComponent implements OnInit {
     ).subscribe(([sales, stockOffset]: [any[], any[]]) => {
       this.totalSales = parseInt(sales[0]['total-sales']);
       this.stockOffset = parseInt(stockOffset[0].stockOffset);
-      this.product.estimatedStock = this.totalSales - this.stockOffset;
+      this.product.estimatedStock = this.stockOffset - this.totalSales;
     });
   }
 
-  openDialog() {
+  openStockDialog() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
     dialogConfig.data = {
@@ -45,6 +46,16 @@ export class ProductRowComponent implements OnInit {
       productNum: this.product.id,
     }
     const dialogRef = this.dialog.open(StockEditDialogComponent, dialogConfig);
+  }
 
+  openPriceDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+      productName: this.product.name,
+      productNum: this.product.id,
+      currentPrice: this.product.price
+    }
+    const dialogRef = this.dialog.open(PriceEditDialogComponent, dialogConfig);
   }
 }

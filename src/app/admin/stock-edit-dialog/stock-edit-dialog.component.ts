@@ -13,7 +13,7 @@ export class StockEditDialogComponent implements OnInit {
   stockOffset: number;
   latestSales: number;
   productName: string;
-  productNum: number
+  productNum: number;
 
   constructor(
     private dialogRef: MatDialogRef<StockEditDialogComponent>,
@@ -28,7 +28,7 @@ export class StockEditDialogComponent implements OnInit {
   }
 
   inputChange(event: any): void {
-    this.stockOffset = this.latestSales - event.target.value;
+    this.stockOffset = this.latestSales + parseInt(event.target.value);
 
   }
 

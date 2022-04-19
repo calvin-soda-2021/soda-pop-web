@@ -14,6 +14,8 @@ export class StockDashboardComponent implements OnInit {
   tableData: Product[];
   productList: any[];
 
+  gridBreakpoint: number;
+
   // mockStock: Product[] = [
   //   {name: 'Coke', inStock: 'Yes', estimatedStock: 32, price: "$1.75"},
   //   {name: 'New Coke', inStock: 'No', estimatedStock: 0, price: "$1.75"},
@@ -23,8 +25,13 @@ export class StockDashboardComponent implements OnInit {
   //   {name: 'Vanilla Coke', inStock: 'Yes', estimatedStock: 52, price: "$1.75"},
   // ];
 
+  onResize(event) {
+    this.gridBreakpoint = (event.target.innerWidth <= 480) ? 1 : 3;
+  }
+
 
   ngOnInit(): void {
+    this.gridBreakpoint = (window.innerWidth <= 480) ? 1 : 3;
 
     this.db.getCurrentProducts().subscribe((product) => {
       this.stocks = product;

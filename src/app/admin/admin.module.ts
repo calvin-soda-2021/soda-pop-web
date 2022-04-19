@@ -10,6 +10,9 @@ import {MatInputModule} from '@angular/material/input';
 import { StockEditDialogComponent } from './stock-edit-dialog/stock-edit-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatIconModule} from '@angular/material/icon';
+import {MatCardModule} from '@angular/material/card';
+import { PriceEditDialogComponent } from './price-edit-dialog/price-edit-dialog.component';
 
 
 
@@ -17,7 +20,8 @@ import {MatDividerModule} from '@angular/material/divider';
   declarations: [
     AdminComponent,
     ProductRowComponent,
-    StockEditDialogComponent
+    StockEditDialogComponent,
+    PriceEditDialogComponent
   ],
   imports: [
     CommonModule,
@@ -27,6 +31,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MatInputModule,
     MatDialogModule,
     MatDividerModule,
+    MatIconModule,
+    MatCardModule,
   ]
 })
 export class AdminModule { }

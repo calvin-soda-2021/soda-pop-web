@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Edit price for {{productName}}</h2>
+<mat-dialog-content>
+  <p>This feature is not currently live, but you can see a console message with the simulated outcome.</p>
+  <mat-form-field appearance="outline">
+    <mat-label>Price</mat-label>
+    <span matPrefix>$ &nbsp;</span>
+    <input matInput type="number" value="{{currentPrice}}" (change)="inputChange($event)">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-flat-button (click)="close()">Close</button>
+  <button mat-flat-button color="primary" (click)="confirm()">Confirm</button>
+</mat-dialog-actions>

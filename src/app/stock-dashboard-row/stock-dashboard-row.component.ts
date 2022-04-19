@@ -16,6 +16,7 @@ export class StockDashboardRowComponent implements OnInit {
   totalSales: number;
   stockOffset: number;
   stockString: string;
+  productImagePath: string;
 
   OVERRIDE_OUT_OF_STOCK: boolean = false;
 
@@ -34,11 +35,19 @@ export class StockDashboardRowComponent implements OnInit {
       ).subscribe(([sales, stockOffset]: [any[], any[]]) => {
         this.totalSales = parseInt(sales[0]["total-sales"]);
         this.stockOffset = parseInt(stockOffset[0].stockOffset);
-        this.product.estimatedStock = this.totalSales - this.stockOffset;
+        this.product.estimatedStock = this.stockOffset - this.totalSales;
         this.stockString = `Around ${this.product.estimatedStock} in stock`;
       })
     } else {
       this.stockString = "Out of stock";
+    }
+
+    if (this.product.name === "Coke") {
+      this.productImagePath = "./assets/coke.jpeg"
+    } else if (this.product.name === "Vanilla Coke") {
+      this.productImagePath = "./assets/vanilla_coke.jpeg"
+    } else {
+      this.productImagePath = "./assets/soda_placeholder.png"
     }
 
   }
